@@ -9,10 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // MARK: - IBOutlets
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var cocktailImage: UIImageView!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
-    
+
+    // MARK: - View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
         fetchRandomCocktail()
     }
 
+    // MARK: - IBActions
     @IBAction func getRandomCocktailButtonDidTapped() {
         activityIndicator.startAnimating()
         fetchRandomCocktail()
@@ -27,6 +30,7 @@ class ViewController: UIViewController {
     
 }
 
+// MARK: - Private Methods
 extension ViewController {
     private func fetchRandomCocktail() {
         NetworkManager.shared.fetch(
@@ -121,7 +125,7 @@ extension ViewController {
         Category: \(cocktailCategory)
         Glass: \(cocktailGlass)
         Recipe: \(cocktailInstruction)
-        Ingredients: \n
+        Ingredients:\n
         """
 
         cocktailIngredients.forEach { (key, value) in
